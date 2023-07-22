@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 
 const index = () => {
   return (
@@ -32,7 +33,10 @@ const index = () => {
             </div>
 
             <div class="input-field-div col-lg-12">
-              <label htmlFor="courseDescription" class="form-label admin-form-label">
+              <label
+                htmlFor="courseDescription"
+                class="form-label admin-form-label"
+              >
                 Course description
               </label>
               <textarea
@@ -75,7 +79,10 @@ const index = () => {
             </div>
 
             <div class="input-field-div col-lg-12">
-              <label htmlFor="classDuration" class="form-label admin-form-label">
+              <label
+                htmlFor="classDuration"
+                class="form-label admin-form-label"
+              >
                 Class duration in days
               </label>
               <input

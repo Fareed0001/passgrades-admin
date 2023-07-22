@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 :root {
   --primary-color: #000d83;
   --secondary-color: #4b5fdc;
@@ -50,7 +52,7 @@
 
 .create-account-button {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin:  5% 0 0 0;
+  margin: 5% 0 0 0;
   width: 40%;
 }
 
