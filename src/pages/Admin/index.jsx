@@ -84,7 +84,7 @@ const index = () => {
             </div>
           </Link>
 
-          <Link className="admin-card-link" href="/Admin/SeeAllAdmin">
+          <Link className="admin-card-link" href="/Admin/SeeAllAgents">
             <div className="admin-card-div0 card mb-3">
               <div className="card-body flex items-center justify-center flex-col">
                 <BiUserCheck className="admin-card-icon" />
@@ -95,7 +95,7 @@ const index = () => {
             </div>
           </Link>
 
-          <Link className="admin-card-link" href="/Admin/SeeAllAdmin">
+          <Link className="admin-card-link" href="/Admin/SeeAllInstructors">
             <div className="admin-card-div0 card mb-3">
               <div className="card-body flex items-center justify-center flex-col">
                 <BiSolidUserDetail className="admin-card-icon" />
@@ -106,7 +106,7 @@ const index = () => {
             </div>
           </Link>
 
-          <Link className="admin-card-link" href="/Admin/SeeAllAdmin">
+          <Link className="admin-card-link" href="/Admin/SeeAllCourses">
             <div className="admin-card-div0 card mb-3">
               <div className="card-body flex items-center justify-center flex-col">
                 <BiSolidBookContent className="admin-card-icon" />
@@ -117,7 +117,7 @@ const index = () => {
             </div>
           </Link>
 
-          <Link className="admin-card-link" href="/Admin/SeeAllAdmin">
+          <Link className="admin-card-link" href="/Admin/SeeAllStudents">
             <div className="admin-card-div0 card mb-3">
               <div className="card-body flex items-center justify-center flex-col">
                 <BiSolidUserRectangle className="admin-card-icon" />
