@@ -2,10 +2,12 @@ import React, { useRef } from "react";
 import Axios from "@/utils/Axios";
 import Cookies from "js-cookie";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const CourseCreate_URL = "/create/course";
 
 const Index = () => {
+  const router = useRouter();
   const imageref = useRef(null);
   const coursetitleref = useRef(null);
   const courseDescriptionref = useRef(null);
@@ -41,6 +43,7 @@ const Index = () => {
 
       console.log(response?.status);
       toast.success("sucessfully Added a course");
+      router.push("/Admin");
       imageref.current.value = "";
       courseDescriptionref.current.value = "";
       coursetitleref.current.value = "";
