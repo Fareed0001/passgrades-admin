@@ -7,8 +7,6 @@ import { BiLoader } from "react-icons/bi";
 
 const Api_Url =
   "http://passmark.eu-north-1.elasticbeanstalk.com/api/v1/admin/login";
-const Api_token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NGI1NzU3ZjMyZDE5NzRkNDU2NTAyZTEiLCJlbWFpbCI6ImFkbWluMkBnbWFpbC5jb20iLCJpYXQiOjE2ODk5MDM5MDksImV4cCI6MTcyMTQzOTkwOX0.EIZ3WJ8zb7Wwqr7J205Hqt_jY-r8NrABDHFLtVZEf9U";
 
 const Index = () => {
   const router = useRouter();
@@ -29,10 +27,34 @@ const Index = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer${Api_token}`,
+        // Authorization: `Bearer${Api_token}`,
       },
       body: JSON.stringify(data),
     };
+
+    //     import axios from "axios";
+    // import Cookies from "js-cookie";
+    // import config from "../utils/config";
+    // import BACKEND_URLS from "./urls";
+
+    // export const configOptions = () => {
+    //   if (typeof window === "undefined") return {};
+
+    //   if (!Cookies.get(config.key.token)) return {};
+
+    //   const accessToken = Cookies.get(config.key.token);
+
+    //   if (accessToken) {
+    //     return {
+    //       headers: {
+    //         Authorization: `Bearer ${accessToken}`,
+    //       },
+    //     };
+    //   }
+    //   return {};
+    // };
+
+    // export const instance = axios.create({
 
     setLoading(true);
     fetch(Api_Url, requestOptions)
