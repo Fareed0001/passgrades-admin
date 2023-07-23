@@ -4,9 +4,11 @@ import React from "react";
 import { useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { BiLoader } from "react-icons/bi";
+import Axios from "@/utils/Axios";
+import axios from "axios";
+import Cookies from "js-cookie";
 
-const Api_Url =
-  "http://passmark.eu-north-1.elasticbeanstalk.com/api/v1/admin/login";
+const LOGIN_URL = "/login";
 
 const Index = () => {
   const router = useRouter();
@@ -14,74 +16,37 @@ const Index = () => {
   const emailref = useRef();
   const passwordref = useRef();
 
-  const SubmitHandler = (event) => {
+  const SubmitHandler = async (event) => {
     event.preventDefault();
-    const email1 = emailref.current.value;
-    const password2 = passwordref.current.value;
-
+    const emaildata = emailref.current.value;
+    const passworddata = passwordref.current.value;
     const data = {
-      email: email1,
-      password: password2,
+      email: emaildata,
+      password: passworddata,
     };
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        // Authorization: `Bearer${Api_token}`,
-      },
-      body: JSON.stringify(data),
-    };
-
-    //     import axios from "axios";
-    // import Cookies from "js-cookie";
-    // import config from "../utils/config";
-    // import BACKEND_URLS from "./urls";
-
-    // export const configOptions = () => {
-    //   if (typeof window === "undefined") return {};
-
-    //   if (!Cookies.get(config.key.token)) return {};
-
-    //   const accessToken = Cookies.get(config.key.token);
-
-    //   if (accessToken) {
-    //     return {
-    //       headers: {
-    //         Authorization: `Bearer ${accessToken}`,
-    //       },
-    //     };
-    //   }
-    //   return {};
-    // };
-
-    // export const instance = axios.create({
-
-    setLoading(true);
-    fetch(Api_Url, requestOptions)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        } else {
-          toast.success("🚀login sucessful");
-          router.push("/Admin");
-          setLoading(false);
-        }
-        return response.json(); // This is how you access the response data
-      })
-      .then((data) => {
-        // Process the data as needed
-        console.log("Response data:", data);
-        // Check the success status if needed
-      })
-      .catch((error) => {
-        // Handle any errors that occurred during the request
-        console.error("Error:", error.message);
-        setLoading(false);
-        toast.error(error.message);
+    try {
+      const response = await Axios.post(LOGIN_URL, JSON.stringify(data), {
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
-
-    emailref.current.value = "";
-    passwordref.current.value = "";
+      Cookies.set("authToken", response?.data?.token, { expires: 7 });
+      toast.success("sucessful admin Login ✅");
+      router.push("/Admin");
+      emailref.current.value = "";
+      passwordref.current.value = "";
+      setLoading(false);
+    } catch (error) {
+      if (!error?.response) {
+        toast.error("No server response");
+      } else if (error.response?.status === 400) {
+        toast.error("Missing username and password");
+      } else if (error.response?.status === 401) {
+        toast.error("unauthorized");
+      } else {
+        toast.error("Login Failed");
+      }
+    }
   };
 
   return (
@@ -177,3 +142,26 @@ const Index = () => {
 };
 
 export default Index;
+
+// fetch(Api_Url, requestOptions)
+//   .then((response) => {
+//     if (!response.ok) {
+//       throw new Error("Network response was not ok");
+//     } else {
+//       toast.success("🚀login sucessful");
+//       router.push("/Admin");
+//       setLoading(false);
+//     }
+//     return response.json(); // This is how you access the response data
+//   })
+//   .then((data) => {
+//     // Process the data as needed
+//     console.log("Response data:", data);
+//     // Check the success status if needed
+//   })
+//   .catch((error) => {
+//     // Handle any errors that occurred during the request
+//     console.error("Error:", error.message);
+//     setLoading(false);
+//     toast.error(error.message);
+//   });
