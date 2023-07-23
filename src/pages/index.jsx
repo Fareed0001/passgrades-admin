@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import { BiLoader } from "react-icons/bi";
 
 const Api_Url =
-  "http://passmark.eu-north-1.elasticbeanstalk.com/api/v1/admin/login";
+  "https://passmark.eu-north-1.elasticbeanstalk.com/api/v1/admin/login";
 
 const Index = () => {
   const router = useRouter();
