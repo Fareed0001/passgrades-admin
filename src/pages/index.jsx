@@ -5,7 +5,6 @@ import { useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { BiLoader } from "react-icons/bi";
 import Axios from "@/utils/Axios";
-import axios from "axios";
 import Cookies from "js-cookie";
 
 const LOGIN_URL = "/login";
@@ -31,6 +30,7 @@ const Index = () => {
         },
       });
       Cookies.set("authToken", response?.data?.token, { expires: 7 });
+      const cookies = Cookies.get("authToken");
       toast.success("sucessful admin Login ✅");
       router.push("/Admin");
       emailref.current.value = "";
