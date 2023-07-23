@@ -1,18 +1,69 @@
-import React from "react";
-import { useState } from "react";
+import React, { useRef } from "react";
+import Axios from "@/utils/Axios";
+import Cookies from "js-cookie";
+import { toast } from "react-hot-toast";
 
-const index = () => {
+const CourseCreate_URL = "/create/course";
+
+const Index = () => {
+  const imageref = useRef(null);
+  const coursetitleref = useRef(null);
+  const courseDescriptionref = useRef(null);
+  const studentPriceref = useRef(null);
+  const AgentPriceRef = useRef(null);
+  const adddurationref = useRef(null);
+
+  const HandleSubmit = async (event) => {
+    event.preventDefault();
+    const coverPhoto = imageref.current.files[0];
+    const title = coursetitleref.current.value;
+    const description = courseDescriptionref.current.value;
+    const student_price = studentPriceref.current.value;
+    const agent_price = AgentPriceRef.current.value;
+    const duration = adddurationref.current.value;
+
+    const formdata = new FormData();
+
+    formdata.append("title", title);
+    formdata.append("description", description);
+    formdata.append("agent_price", agent_price);
+    formdata.append("student_price", student_price);
+    formdata.append("duration", duration);
+    // formdata.append("coverPhoto", coverPhoto);
+
+    try {
+      const response = await Axios.post(CourseCreate_URL, formdata, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${Cookies.get("authToken")}`,
+        },
+      });
+
+      console.log(response?.status);
+      toast.success("sucessfully Added a course");
+      imageref.current.value = "";
+      courseDescriptionref.current.value = "";
+      coursetitleref.current.value = "";
+      AgentPriceRef.current.value = "";
+      studentPriceref.current.value = "";
+      adddurationref.current.value = "";
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <section className="addNewCourse">
       <div class="container new-course-container">
         <p class="admin-header-text">Add a new course</p>
-        <form action="">
+        <form onSubmit={HandleSubmit}>
           <div class="row container">
             <div class="admin-input-field-div col-12 col-lg-6">
               <label htmlFor="coverImage" class="form-label admin-form-label">
                 Select course cover image
               </label>
               <input
+                ref={imageref}
                 class="form-control"
                 type="file"
                 id="coverImage"
@@ -25,6 +76,7 @@ const index = () => {
                 Course title
               </label>
               <input
+                ref={coursetitleref}
                 type="text"
                 class="form-control"
                 placeholder="Enter course title"
@@ -40,6 +92,7 @@ const index = () => {
                 Course description
               </label>
               <textarea
+                ref={courseDescriptionref}
                 class="form-control admin-text-area"
                 placeholder="Enter the course description"
                 id="courseDescription"
@@ -53,6 +106,7 @@ const index = () => {
               <div class="input-group">
                 <span class="input-group-text">₦</span>
                 <input
+                  ref={studentPriceref}
                   id="studentPrice"
                   type="number"
                   class="form-control"
@@ -69,6 +123,7 @@ const index = () => {
               <div class="input-group">
                 <span class="input-group-text">₦</span>
                 <input
+                  ref={AgentPriceRef}
                   id="agentPrice"
                   type="number"
                   class="form-control"
@@ -86,6 +141,7 @@ const index = () => {
                 Class duration in days
               </label>
               <input
+                ref={adddurationref}
                 type="number"
                 class="form-control"
                 placeholder="Enter class duration in days"
@@ -102,4 +158,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
