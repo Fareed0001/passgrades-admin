@@ -29,7 +29,7 @@ const Index = () => {
     formdata.append("agent_price", agent_price);
     formdata.append("student_price", student_price);
     formdata.append("duration", duration);
-    formdata.append("coverPhoto", coverPhoto);
+    // formdata.append("coverPhoto", coverPhoto);
 
     try {
       const response = await Axios.post(CourseCreate_URL, formdata, {
@@ -40,7 +40,13 @@ const Index = () => {
       });
 
       console.log(response?.status);
-      toast.success("sucess");
+      toast.success("sucessfully Added a course");
+      imageref.current.value = "";
+      courseDescriptionref.current.value = "";
+      coursetitleref.current.value = "";
+      AgentPriceRef.current.value = "";
+      studentPriceref.current.value = "";
+      adddurationref.current.value = "";
     } catch (error) {
       toast.error(error.message);
     }
