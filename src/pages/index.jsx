@@ -55,7 +55,6 @@ const Index = () => {
         <div className="h-screen w-screen fixed top-0 left-0 bg-[#ebeefd] z-30 flex items-center justify-center">
           <div className=" w-1/2 h-1/2 mx-auto z-[32] flex items-center justify-center ">
             <span className="flex text-4xl text-blue-500 capitalize">
-              pass
               <Image
                 src="/favicon.ico"
                 alt="passmark logo"
@@ -63,7 +62,7 @@ const Index = () => {
                 width={40}
                 className="mx-2"
               />
-              mark
+              PassGrades
             </span>
             <BiLoader className="animate-spin text-5xl text-[blue]" />
           </div>
