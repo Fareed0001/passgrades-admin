@@ -39,7 +39,7 @@ const Index = () => {
     } catch (error) {
       setLoading(false);
       if (!error?.response) {
-        toast.error("Error: No server response");
+        toast.error("Error: No server response?");
       } else {
         toast.error(`Error ${error.response?.status}`);
       }
