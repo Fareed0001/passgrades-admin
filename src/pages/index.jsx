@@ -39,12 +39,141 @@ const Index = () => {
     } catch (error) {
       if (!error?.response) {
         toast.error("No server response");
-      } else if (error.response?.status === 400) {
-        toast.error("Missing username and password");
+      } else if (error.response?.status === 200) {
+        toast.error("Error 200");
+      } else if (error.response?.status === 201) {
+        toast.error("Created");
+      } else if (error.response?.status === 202) {
+        toast.error("Error 202");
+      } else if (error.response?.status === 203) {
+        toast.error("Error 203");
+      } else if (error.response?.status === 204) {
+        toast.error("Error 204");
+      } else if (error.response?.status === 205) {
+        toast.error("Error 205");
+      } else if (error.response?.status === 206) {
+        toast.error("Error 206");
+      } else if (error.response?.status === 207) {
+        toast.error("Error 207");
+      } else if (error.response?.status === 208) {
+        toast.error("Error 208");
+      } else if (error.response?.status === 209) {
+        toast.error("Error 209");
+      } else if (error.response?.status === 226) {
+        toast.error("Error 226");
+      }
+
+      else if (error.response?.status === 300) {
+        toast.error("Error 300");
+      } else if (error.response?.status === 301) {
+        toast.error("Err 301");
+      } else if (error.response?.status === 302) {
+        toast.error("Error 302");
+      } else if (error.response?.status === 303) {
+        toast.error("Error 303");
+      } else if (error.response?.status === 304) {
+        toast.error("Error 304");
+      } else if (error.response?.status === 305) {
+        toast.error("Error 305");
+      } else if (error.response?.status === 306) {
+        toast.error("Error 306");
+      } else if (error.response?.status === 307) {
+        toast.error("Error 307");
+      } else if (error.response?.status === 308) {
+        toast.error("Error 308");
+      } else if (error.response?.status === 309) {
+        toast.error("Error 309");
+      }
+
+      else if (error.response?.status === 400) {
+        toast.error("Error 400");
       } else if (error.response?.status === 401) {
-        toast.error("unauthorized");
+        toast.error("Err 401");
+      } else if (error.response?.status === 402) {
+        toast.error("Error 402");
+      } else if (error.response?.status === 403) {
+        toast.error("Error 403");
+      } else if (error.response?.status === 404) {
+        toast.error("Error 404");
+      } else if (error.response?.status === 405) {
+        toast.error("Error 405");
+      } else if (error.response?.status === 406) {
+        toast.error("Error 406");
+      } else if (error.response?.status === 407) {
+        toast.error("Error 407");
+      } else if (error.response?.status === 408) {
+        toast.error("Error 408");
+      } else if (error.response?.status === 409) {
+        toast.error("Error 409");
+      }
+
+      else if (error.response?.status === 410) {
+        toast.error("Error 410");
+      } else if (error.response?.status === 411) {
+        toast.error("Err 411");
+      } else if (error.response?.status === 413) {
+        toast.error("Error 412");
+      } else if (error.response?.status === 414) {
+        toast.error("Error 413");
+      } else if (error.response?.status === 415) {
+        toast.error("Error 414");
+      } else if (error.response?.status === 416) {
+        toast.error("Error 416");
+      } else if (error.response?.status === 417) {
+        toast.error("Error 417");
+      } else if (error.response?.status === 418) {
+        toast.error("Error 418");
+      } else if (error.response?.status === 420) {
+        toast.error("Error 420");
+      } else if (error.response?.status === 422) {
+        toast.error("Error 422");
+      } else if (error.response?.status === 423) {
+        toast.error("Error 423");
+      } else if (error.response?.status === 424) {
+        toast.error("Error 424");
+      } else if (error.response?.status === 425) {
+        toast.error("Error 425");
+      } else if (error.response?.status === 426) {
+        toast.error("Error 426");
+      } else if (error.response?.status === 429) {
+        toast.error("Error 429");
+      } else if (error.response?.status === 431) {
+        toast.error("Error 431");
+      } else if (error.response?.status === 444) {
+        toast.error("Error 444");
+      } else if (error.response?.status === 450) {
+        toast.error("Error 450");
+      } else if (error.response?.status === 451) {
+        toast.error("Error 451");
+      } else if (error.response?.status === 494) {
+        toast.error("Error 494");
+      }
+
+      else if (error.response?.status === 500) {
+        toast.error("Error 500");
+      } else if (error.response?.status === 501) {
+        toast.error("Err 501");
+      } else if (error.response?.status === 502) {
+        toast.error("Error 502");
+      } else if (error.response?.status === 503) {
+        toast.error("Error 503");
+      } else if (error.response?.status === 504) {
+        toast.error("Error 504");
+      } else if (error.response?.status === 505) {
+        toast.error("Error 505");
+      } else if (error.response?.status === 506) {
+        toast.error("Error 506");
+      } else if (error.response?.status === 507) {
+        toast.error("Error 507");
+      } else if (error.response?.status === 508) {
+        toast.error("Error 508");
+      } else if (error.response?.status === 509) {
+        toast.error("Error 509");
+      } else if (error.response?.status === 510) {
+        toast.error("Error 510");
       } else {
         toast.error("Login Failed");
+        console.log(error);
       }
     }
   };
