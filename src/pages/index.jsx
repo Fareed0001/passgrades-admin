@@ -38,7 +38,7 @@ const Index = () => {
       setLoading(false);
     } catch (error) {
       if (!error?.response) {
-        toast.error("No server response");
+        toast.error("Error: No server response");
       } else if (error.response?.status === 200) {
         toast.error("Error 200");
       } else if (error.response?.status === 201) {
