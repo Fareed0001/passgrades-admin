@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Axios from "@/utils/Axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
@@ -14,7 +14,6 @@ const Index = () => {
   const studentPriceref = useRef(null);
   const AgentPriceRef = useRef(null);
   const adddurationref = useRef(null);
-  const [selectedImage, setSelectedImage] = useState(null);
 
   const HandleSubmit = async (event) => {
     event.preventDefault();
@@ -24,7 +23,7 @@ const Index = () => {
     const agent_price = AgentPriceRef.current.value;
     const student_price = studentPriceref.current.value;
     const duration = adddurationref.current.value;
-    const cover_image = selectedImage;
+    const cover_image = imageref.current.files[0];
 
     const formdata = new FormData();
 
@@ -51,7 +50,6 @@ const Index = () => {
       AgentPriceRef.current.value = "";
       studentPriceref.current.value = "";
       adddurationref.current.value = "";
-      setSelectedImage(null); // Reset selectedImage state after submission
     } catch (error) {
       toast.error(error.message);
     }
