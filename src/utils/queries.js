@@ -53,3 +53,36 @@ export const getstudents = async () => {
 getstudents();
 
 // http://passmark.eu-north-1.elasticbeanstalk.com/api/v1/admin/students
+
+
+
+
+const instructorurl = "/instructors";
+
+export const getinstructors = async () => {
+  try {
+    const authToken = Cookies.get("authToken");
+    if (!authToken) {
+      return null;
+    }
+
+    const response = await Axios.get(instructorurl, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
+
+    // Assuming the API returns a "data" object in the response, extract it and return
+    const responseData = response.data;
+    console.log(responseData);
+
+    return responseData;
+  } catch (error) {
+    console.log("Error fetching instructor data:", error.message);
+    return null;
+  }
+};
+
+getinstructors();
+
+// http://passmark.eu-north-1.elasticbeanstalk.com/api/v1/admin/instructors

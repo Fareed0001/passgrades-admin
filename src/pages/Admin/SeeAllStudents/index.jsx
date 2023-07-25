@@ -60,7 +60,7 @@ const Index = () => {
               key={students._id}
               firstName={students.firstname}
               lastname={students.lastname}
-              email={students.email}
+              // email={students.email}
               number={students.number}
             />
           ))}
