@@ -31,7 +31,7 @@ const Index = () => {
       });
       Cookies.set("authToken", response?.data?.token, { expires: 7 });
       const cookies = Cookies.get("authToken");
-      toast.success("sucessful admin Login ✅");
+      toast.success("sucessful admin Login✅");
       router.push("/Admin");
       emailref.current.value = "";
       passwordref.current.value = "";

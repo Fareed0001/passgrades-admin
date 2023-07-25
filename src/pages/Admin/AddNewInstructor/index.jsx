@@ -1,11 +1,46 @@
-import React from "react";
+import Axios from "@/utils/Axios";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
+import React, { useRef } from "react";
+import { toast } from "react-hot-toast";
 
-const index = () => {
+const InstructorUrl = "/create/instructor";
+
+const Index = () => {
+  const router = useRouter();
+  const instFirstnameref = useRef(null);
+  const instLastnameref = useRef(null);
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    const firstname = instFirstnameref.current.value;
+    const lastname = instLastnameref.current.value;
+
+    const formdata = new FormData();
+    formdata.append("firstname", firstname);
+    formdata.append("lastname", lastname);
+
+    try {
+      const response = await Axios.post(InstructorUrl, formdata, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${Cookies.get("authToken")}`,
+        },
+      });
+      router.push("/Admin");
+      instLastnameref.current.value = "";
+      instFirstnameref.current.value = "";
+      toast.success(" instructor created sucessfully");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <section className="addNewCourse">
       <div className="container body-content">
         <p className="admin-header-text">Add a new instructor</p>
-        <form action="">
+        <form onSubmit={submitHandler}>
           <div className="row container">
             <div className="input-field-div col-12 col-lg-12">
               <label
@@ -30,6 +65,7 @@ const index = () => {
                 Instructors first name
               </label>
               <input
+                ref={instFirstnameref}
                 type="text"
                 className="form-control"
                 placeholder="Enter instructor's first name"
@@ -45,6 +81,7 @@ const index = () => {
                 Instructors last name
               </label>
               <input
+                ref={instLastnameref}
                 type="text"
                 className="form-control"
                 placeholder="Enter instructor's last name"
@@ -64,4 +101,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
