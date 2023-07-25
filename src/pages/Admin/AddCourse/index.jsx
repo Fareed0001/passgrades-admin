@@ -1,11 +1,14 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Axios from "@/utils/Axios";
 import Cookies from "js-cookie";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const CourseCreate_URL = "/create/course";
 
 const Index = () => {
+  // const [imagedata, setimagedata] = useState(null);
+  const router = useRouter();
   const imageref = useRef(null);
   const coursetitleref = useRef(null);
   const courseDescriptionref = useRef(null);
@@ -13,9 +16,14 @@ const Index = () => {
   const AgentPriceRef = useRef(null);
   const adddurationref = useRef(null);
 
+  // const imagehandler = (event) => {
+  //   console.log(event.target.files);
+  //   setimagedata(event.target.files[0]);
+  // };
+
   const HandleSubmit = async (event) => {
     event.preventDefault();
-    const coverPhoto = imageref.current.files[0];
+
     const title = coursetitleref.current.value;
     const description = courseDescriptionref.current.value;
     const student_price = studentPriceref.current.value;
@@ -29,7 +37,7 @@ const Index = () => {
     formdata.append("agent_price", agent_price);
     formdata.append("student_price", student_price);
     formdata.append("duration", duration);
-    // formdata.append("coverPhoto", coverPhoto);
+    formdata.append("coverPhoto", imagedata);
 
     try {
       const response = await Axios.post(CourseCreate_URL, formdata, {
@@ -41,6 +49,7 @@ const Index = () => {
 
       console.log(response?.status);
       toast.success("sucessfully Added a course");
+      router.push("/Admin");
       imageref.current.value = "";
       courseDescriptionref.current.value = "";
       coursetitleref.current.value = "";
@@ -63,7 +72,7 @@ const Index = () => {
                 Select course cover image
               </label>
               <input
-                ref={imageref}
+                // onChange={imagehandler}
                 class="form-control"
                 type="file"
                 id="coverImage"
