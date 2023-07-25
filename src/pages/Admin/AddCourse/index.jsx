@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 const CourseCreate_URL = "/create/course";
 
 const Index = () => {
-  // const [imagedata, setimagedata] = useState(null);
   const router = useRouter();
   const imageref = useRef(null);
   const coursetitleref = useRef(null);
@@ -15,11 +14,6 @@ const Index = () => {
   const studentPriceref = useRef(null);
   const AgentPriceRef = useRef(null);
   const adddurationref = useRef(null);
-
-  // const imagehandler = (event) => {
-  //   console.log(event.target.files);
-  //   setimagedata(event.target.files[0]);
-  // };
 
   const HandleSubmit = async (event) => {
     event.preventDefault();
@@ -29,6 +23,7 @@ const Index = () => {
     const student_price = studentPriceref.current.value;
     const agent_price = AgentPriceRef.current.value;
     const duration = adddurationref.current.value;
+    const imagedata = imageref.current.value;
 
     const formdata = new FormData();
 
@@ -37,7 +32,7 @@ const Index = () => {
     formdata.append("agent_price", agent_price);
     formdata.append("student_price", student_price);
     formdata.append("duration", duration);
-    formdata.append("coverPhoto", imagedata);
+    formdata.append("cover_image", imagedata);
 
     try {
       const response = await Axios.post(CourseCreate_URL, formdata, {
@@ -72,7 +67,7 @@ const Index = () => {
                 Select course cover image
               </label>
               <input
-                // onChange={imagehandler}
+                ref={imageref}
                 class="form-control"
                 type="file"
                 id="coverImage"
