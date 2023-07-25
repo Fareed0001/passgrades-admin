@@ -16,8 +16,6 @@ const Index = () => {
   const adddurationref = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const coverImageRef = useRef(null); // Define the coverImageRef reference here
-
   const HandleSubmit = async (event) => {
     event.preventDefault();
 
@@ -26,7 +24,7 @@ const Index = () => {
     const agent_price = AgentPriceRef.current.value;
     const student_price = studentPriceref.current.value;
     const duration = adddurationref.current.value;
-    const imagedata = imageref.current.value;
+    const cover_image = selectedImage;
 
     const formdata = new FormData();
 
@@ -35,8 +33,7 @@ const Index = () => {
     formdata.append("agent_price", agent_price);
     formdata.append("student_price", student_price);
     formdata.append("duration", duration);
-    formdata.append("cover_image", imagedata);
-
+    formdata.append("cover_image", cover_image);
 
     try {
       const response = await Axios.post(CourseCreate_URL, formdata, {
@@ -47,18 +44,19 @@ const Index = () => {
       });
 
       console.log(response?.status);
-      toast.success("sucessfully Added a course");
+      toast.success("Successfully Added a course");
       router.push("/Admin");
-      imageref.current.value = "";
-      courseDescriptionref.current.value = "";
       coursetitleref.current.value = "";
+      courseDescriptionref.current.value = "";
       AgentPriceRef.current.value = "";
       studentPriceref.current.value = "";
       adddurationref.current.value = "";
+      setSelectedImage(null); // Reset selectedImage state after submission
     } catch (error) {
       toast.error(error.message);
     }
   };
+
 
   return (
     <section className="addNewCourse">
@@ -72,7 +70,7 @@ const Index = () => {
               </label>
               <input
                 ref={imageref}
-                class="form-control"
+                className="form-control"
                 type="file"
                 id="coverImage"
                 accept="image/*"
