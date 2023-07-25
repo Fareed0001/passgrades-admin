@@ -17,12 +17,12 @@ const Index = () => {
 
   const SubmitHandler = async (event) => {
     event.preventDefault();
-        const emaildata = emailref.current.value;
-        const passworddata = passwordref.current.value;
-        const data = {
-          email: emaildata,
-          password: passworddata,
-        };
+    const emaildata = emailref.current.value;
+    const passworddata = passwordref.current.value;
+    const data = {
+      email: emaildata,
+      password: passworddata,
+    };
     try {
       setLoading(true);
       const response = await Axios.post(LOGIN_URL, JSON.stringify(data), {

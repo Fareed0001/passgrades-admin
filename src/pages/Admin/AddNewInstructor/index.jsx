@@ -1,7 +1,7 @@
+import React, { useRef } from "react";
 import Axios from "@/utils/Axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import React, { useRef } from "react";
 import { toast } from "react-hot-toast";
 
 const InstructorUrl = "/create/instructor";
@@ -10,15 +10,22 @@ const Index = () => {
   const router = useRouter();
   const instFirstnameref = useRef(null);
   const instLastnameref = useRef(null);
+  // Temi this line is to create the reference for the file input
+  const coverImageRef = useRef(null); 
 
   const submitHandler = async (event) => {
     event.preventDefault();
     const firstname = instFirstnameref.current.value;
     const lastname = instLastnameref.current.value;
-
+    // and this one is to get the selected image file
+    const photo = coverImageRef.current.files[0]; 
+    
     const formdata = new FormData();
     formdata.append("firstname", firstname);
     formdata.append("lastname", lastname);
+    // then append the selected image with the key 'photo'
+    formdata.append("photo", photo); 
+
 
     try {
       const response = await Axios.post(InstructorUrl, formdata, {
@@ -30,7 +37,7 @@ const Index = () => {
       router.push("/Admin");
       instLastnameref.current.value = "";
       instFirstnameref.current.value = "";
-      toast.success(" instructor created sucessfully");
+      toast.success("Instructor created successfully");
     } catch (error) {
       toast.error(error.message);
     }
@@ -50,6 +57,7 @@ const Index = () => {
                 Instructors profile picture
               </label>
               <input
+                ref={coverImageRef}
                 className="form-control"
                 type="file"
                 id="coverImage"
