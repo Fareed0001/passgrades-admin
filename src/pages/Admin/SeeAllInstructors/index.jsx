@@ -41,7 +41,6 @@ const Index = () => {
     <section className="addNewCourse">
       <div className="container body-content">
         <p className="admin-header-text">See all Instructors</p>
-        <p className="admin-sub-header-text">Total number of Instructors: </p>
 
         <div className="see-all-div">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">

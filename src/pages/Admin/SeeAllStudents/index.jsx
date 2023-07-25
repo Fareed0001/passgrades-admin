@@ -50,7 +50,6 @@ const Index = () => {
     <section className="addNewCourse">
       <div className="container body-content">
         <p className="admin-header-text">See all Students</p>
-        <p className="admin-sub-header-text">Total number of students: </p>
 
         <div className="see-all-div flex gap-x-20 mc-auto ">
           {/* heres where i map the student array fetched */}
