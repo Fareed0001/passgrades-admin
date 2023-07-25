@@ -18,10 +18,6 @@ const Index = () => {
 
   const coverImageRef = useRef(null); // Define the coverImageRef reference here
 
-  const handleImageChange = (event) => {
-    setSelectedImage(event.target.files[0]);
-  };
-
   const HandleSubmit = async (event) => {
     event.preventDefault();
 
@@ -30,7 +26,7 @@ const Index = () => {
     const agent_price = AgentPriceRef.current.value;
     const student_price = studentPriceref.current.value;
     const duration = adddurationref.current.value;
-    const cover_image = selectedImage;
+    const imagedata = imageref.current.value;
 
     const formdata = new FormData();
 
@@ -39,7 +35,8 @@ const Index = () => {
     formdata.append("agent_price", agent_price);
     formdata.append("student_price", student_price);
     formdata.append("duration", duration);
-    formdata.append("cover_image", cover_image);
+    formdata.append("cover_image", imagedata);
+
 
     try {
       const response = await Axios.post(CourseCreate_URL, formdata, {
@@ -74,8 +71,8 @@ const Index = () => {
                 Select course cover image
               </label>
               <input
-                ref={coverImageRef}
-                className="form-control"
+                ref={imageref}
+                class="form-control"
                 type="file"
                 id="coverImage"
                 accept="image/*"
