@@ -16,6 +16,7 @@ import Link from "next/link";
 const index = () => {
   return (
     <section className="adminIndex">
+      <p className="greeting-text">Welcome back firstname lastname</p>
       <div className="container admin-container">
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
           <Link className="admin-card-link" href="/Admin/AddCourse">

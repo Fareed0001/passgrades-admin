@@ -120,3 +120,36 @@ export const getcourses = async () => {
 getcourses();
 
 // http://passmark.eu-north-1.elasticbeanstalk.com/api/v1/admin/courses
+
+
+
+
+const agenturl = "/agents";
+
+export const getagents = async () => {
+  try {
+    const authToken = Cookies.get("authToken");
+    if (!authToken) {
+      return null;
+    }
+
+    const response = await Axios.get(agenturl, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    });
+
+    // Assuming the API returns a "data" object in the response, extract it and return
+    const responseData = response.data;
+    console.log(responseData);
+
+    return responseData;
+  } catch (error) {
+    console.log("Error fetching agent data:", error.message);
+    return null;
+  }
+};
+
+getagents();
+
+// http://passmark.eu-north-1.elasticbeanstalk.com/api/v1/admin/agents

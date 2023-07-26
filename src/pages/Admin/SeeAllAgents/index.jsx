@@ -1,7 +1,44 @@
+import AgentCard from "@/Components/AgentCard";
+import Axios from "@/utils/Axios";
+import { getagent, getagents } from "@/utils/queries";
+import Cookies from "js-cookie";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 
-const index = () => {
+const agenturl = "/agents";
+
+const Index = () => {
+  const [agents, setAgents] = useState([]);
+
+  useEffect(() => {
+    const fetchAgents = async () => {
+      try {
+        const authToken = Cookies.get("authToken");
+        if (!authToken) {
+          return null;
+        }
+
+        const response = await Axios.get(agenturl, {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+
+        const responseData = response.data;
+        setAgents(responseData?.data);
+        console.log(agents);
+
+        toast.success(responseData?.message);
+      } catch (error) {
+        console.log("Error fetching agent data:", error.message);
+        return null;
+      }
+    };
+
+    fetchAgents();
+  }, []);
+
   return (
     <section className="addNewCourse">
       <div className="container body-content">
@@ -9,25 +46,15 @@ const index = () => {
 
         <div className="see-all-div">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-            
-            <div className="col see-all-col">
-              <div className="see-all-card">
-                <Image
-                  src=""
-                  className="card-img-top see-all-card-img"
-                  alt=""
-                />
-                <div className="see-all-card-body">
-                  <p className="see-all-card-title">Name</p>
-                  <div class="d-grid">
-                    <button type="button" class="btn btn-outline-danger">
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            {agents.map((agent) => (
+              <AgentCard
+                key={agent._id}
+                firstName={agent.firstname}
+                lastname={agent.lastname}
+                email={agent.email}
+                number={agent.number}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -35,4 +62,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

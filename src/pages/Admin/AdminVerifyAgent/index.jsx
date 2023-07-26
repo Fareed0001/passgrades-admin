@@ -13,7 +13,7 @@ const index = () => {
             <div class="col agent-col">
               <div class="new-agent-card">
                 <Image
-                  src="https://avatars.githubusercontent.com/u/64348428?v=4"
+                  src=""
                   class="card-img-top courses-card-img"
                   alt="sat"
                 />
@@ -44,7 +44,7 @@ const index = () => {
             <div class="col">
               <div class="new-agent-card">
                 <Image
-                  src="https://avatars.githubusercontent.com/u/64348428?v=4"
+                  src=""
                   class="card-img-top courses-card-img"
                   alt="sat"
                 />
@@ -75,7 +75,7 @@ const index = () => {
             <div class="col">
               <div class="new-agent-card">
                 <Image
-                  src="https://avatars.githubusercontent.com/u/64348428?v=4"
+                  src=""
                   class="card-img-top courses-card-img"
                   alt="sat"
                 />

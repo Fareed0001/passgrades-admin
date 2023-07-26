@@ -1,11 +1,11 @@
 import React from "react";
 
-const StudentCard = ({ firstName, lastname, email, phonenumber }) => {
+const AgentCard = ({ firstName, lastname, email, phonenumber }) => {
   return (
     <div className="col see-all-col">
       <div className="see-all-card">
 
-        <img src="" alt="Yet to update Image" className="card-img-top see-all-card-img" />
+        <img src="" alt="Yet to update image" className="card-img-top see-all-card-img" />
 
         {/* you can comment out my tailwind styles */}
         <div className="see-all-card-body text-center text-sm font-bold">
@@ -23,4 +23,4 @@ const StudentCard = ({ firstName, lastname, email, phonenumber }) => {
   );
 };
 
-export default StudentCard;
+export default AgentCard;
