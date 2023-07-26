@@ -1,8 +1,8 @@
 import StudentCard from "@/Components/StudentCard";
+
 import Axios from "@/utils/Axios";
-import { getstudent, getstudents } from "@/utils/queries";
+
 import Cookies from "js-cookie";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
@@ -27,7 +27,6 @@ const Index = () => {
 
         const responseData = response.data;
         setStudents(responseData?.data);
-        console.log(students);
 
         toast.success(responseData?.message);
       } catch (error) {
@@ -40,13 +39,12 @@ const Index = () => {
   }, []);
 
   return (
-    <section className="addNewCourse">
+    <section className="addNewCourse h-screen">
       <div className="container body-content">
         <p className="admin-header-text">See all Students</p>
 
         <div className="see-all-div">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-
             {students.map((student) => (
               <StudentCard
                 key={student._id}
@@ -58,7 +56,6 @@ const Index = () => {
             ))}
           </div>
         </div>
-        
       </div>
     </section>
   );
