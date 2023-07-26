@@ -36,12 +36,12 @@ const Index = () => {
     const classtitle = classtitleref.current.value;
     const instructor = instructorRef.current.value;
     const description = descriptionRef.current.value;
-    const courses = Courseref.current.value;
+    const course_id = Courseref.current.value;
 
     const formdata = new FormData();
     formdata.append("title", classtitle);
     formdata.append("description", description);
-    formdata.append("course_id", courses);
+    formdata.append("course_id", course_id);
     formdata.append("video", video);
     formdata.append("resource", resource);
     formdata.append("instructor", instructor);
@@ -56,11 +56,12 @@ const Index = () => {
         },
       });
 
-      router.push("/Admin");
-      toast.success("class added successfully");
-    } catch (error) {
-      toast.error(error.message);
       setLoading(false);
+      router.push("/Admin");
+      toast.success("Class added successfully");
+    } catch (error) {
+      setLoading(false);
+      toast.error(error.message);
     }
   };
 
@@ -116,7 +117,7 @@ const Index = () => {
                 type="text"
                 ref={classtitleref}
                 className="form-control"
-                placeholder="Enter className title"
+                placeholder="Enter class name title"
                 id="classTitle"
               />
             </div>
@@ -132,7 +133,7 @@ const Index = () => {
                 ref={instructorRef}
                 type="text"
                 className="form-control"
-                placeholder="Enter className instructor"
+                placeholder="Enter class name instructor"
                 id="classInstructor"
               />
             </div>
@@ -147,7 +148,7 @@ const Index = () => {
               <textarea
                 ref={descriptionRef}
                 className="form-control admin-text-area"
-                placeholder="Enter the className description"
+                placeholder="Enter the class name description"
                 id="classDescription"
               ></textarea>
             </div>
@@ -157,9 +158,9 @@ const Index = () => {
                 Select course
               </label>
               <select className="form-select" ref={Courseref} required>
-                <option selected>Select course to add className to</option>
+                <option value="" disabled>Select course to add class name to</option>
                 {Courses.map((course) => (
-                  <option key={course._id} value="course._id">
+                  <option key={course._id} value={course._id}>
                     {course.title}
                   </option>
                 ))}
@@ -173,7 +174,7 @@ const Index = () => {
           >
             <div className="flex items-center justify-center gap-x-2">
               <span className="">
-                {Loading ? "loading.." : "Add new class"}
+                {Loading ? "Loading..." : "Add new class"}
               </span>
               <span>
                 {Loading ? <BiLoaderAlt className="animate-spin" /> : " "}
