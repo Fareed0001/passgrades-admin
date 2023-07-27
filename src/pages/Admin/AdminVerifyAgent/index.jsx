@@ -3,7 +3,7 @@ import React from "react";
 
 const index = () => {
   return (
-    <section className="addNewCourse">
+    <section className="bg-[#ebeefd] h-full fixed w-full overflow-auto py-10">
       <div class="container  new-course-container">
         <p class="admin-header-text">Verify new agent</p>
 
@@ -12,11 +12,7 @@ const index = () => {
           <div class="row row-cols-1 row-cols-md-2  row-cols-lg-3 g-4">
             <div class="col agent-col">
               <div class="new-agent-card">
-                <Image
-                  src=""
-                  class="card-img-top courses-card-img"
-                  alt="sat"
-                />
+                <Image src="" class="card-img-top courses-card-img" alt="sat" />
                 <div class="agent-card-body">
                   <p class="agent-card-title">Temitope David</p>
                   <div class="row">
@@ -43,11 +39,7 @@ const index = () => {
 
             <div class="col">
               <div class="new-agent-card">
-                <Image
-                  src=""
-                  class="card-img-top courses-card-img"
-                  alt="sat"
-                />
+                <Image src="" class="card-img-top courses-card-img" alt="sat" />
                 <div class="agent-card-body">
                   <p class="agent-card-title">Temitope David</p>
                   <div class="row">
@@ -74,11 +66,7 @@ const index = () => {
 
             <div class="col">
               <div class="new-agent-card">
-                <Image
-                  src=""
-                  class="card-img-top courses-card-img"
-                  alt="sat"
-                />
+                <Image src="" class="card-img-top courses-card-img" alt="sat" />
                 <div class="agent-card-body">
                   <p class="agent-card-title">Temitope David</p>
                   <div class="row">

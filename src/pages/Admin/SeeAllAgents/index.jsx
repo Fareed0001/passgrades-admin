@@ -1,6 +1,6 @@
-import AgentCard from "@/Components/AgentCard";
+import AgentList from "@/Components/AgentList";
 import Axios from "@/utils/Axios";
-import { getagent, getagents } from "@/utils/queries";
+
 import Cookies from "js-cookie";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -41,6 +41,14 @@ const Index = () => {
     fetchAgents();
   }, []);
 
+  const HandleDeleteItem = (AgentID) => {
+    setAgents((previtem) => {
+      const filteredArray = previtem.filter((item) => item._id !== AgentID);
+      toast.success("deleted");
+      return filteredArray;
+    });
+  };
+
   return (
     <>
       {Loading ? (
@@ -57,19 +65,21 @@ const Index = () => {
           <div className="container body-content">
             <p className="admin-header-text">See all Agents</p>
 
-            <div className="see-all-div">
-              <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-                {agents.map((agent) => (
-                  <AgentCard
-                    key={agent._id}
-                    firstName={agent.firstname}
-                    lastname={agent.lastname}
-                    email={agent.email}
-                    number={agent.number}
-                  />
-                ))}
+            {agents.length === 0 ? (
+              <div className="fixed h-screen w-screen top-0 left-0 flex items-center justify-center text-4xl font-bold capitalize">
+                no available agent
               </div>
-            </div>
+            ) : (
+              <div className="see-all-div">
+                <AgentList
+                  Agentdata={agents}
+                  onDelete={(id) => {
+                    HandleDeleteItem(id);
+                  }}
+                  key={agents.length}
+                />
+              </div>
+            )}
           </div>
         </section>
       )}
