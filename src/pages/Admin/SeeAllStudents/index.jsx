@@ -37,7 +37,7 @@ const Index = () => {
   }, []);
 
   const HandleDeleteItem = (studentID) => {
-    setInstructors((previtem) => {
+    setStudents((previtem) => {
       const filteredArray = previtem.filter((item) => item._id !== studentID);
       toast.success("deleted");
       return filteredArray;
@@ -51,7 +51,7 @@ const Index = () => {
         <div className="see-all-div">
           {students.length === 0 ? (
             <div className="fixed h-screen w-screen top-0 left-0 flex items-center justify-center text-4xl font-bold capitalize">
-              no available instructors
+              no available Students
             </div>
           ) : (
             <div className="see-all-div">
