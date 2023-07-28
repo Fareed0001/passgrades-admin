@@ -1,6 +1,5 @@
-import CourseCard from "@/Components/CourseCard";
+import CourseList from "@/Components/CourseList";
 import Axios from "@/utils/Axios";
-import { getcourses } from "@/utils/queries";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
@@ -39,6 +38,15 @@ const Index = () => {
     fetchCourses();
   }, []);
 
+  const HandleDeleteItem = (CourseID) => {
+    setCourses((previtem) => {
+      const filteredArray = previtem.filter((item) => item._id !== CourseID);
+      console.log(filteredArray);
+      toast.success("deleted");
+      return filteredArray;
+    });
+  };
+
   return (
     <>
       <section className="bg-[#ebeefd] h-full fixed w-full overflow-auto py-10">
@@ -55,17 +63,21 @@ const Index = () => {
           <div className="container body-content">
             <p className="admin-header-text">See all Courses</p>
 
-            <div className="see-all-div">
-              <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-                {courses.map((Courses) => (
-                  <CourseCard
-                    key={Courses._id}
-                    title={Courses.title}
-                    cover_image={Courses.cover_image}
-                  />
-                ))}
+            {courses.length === 0 ? (
+              <div className="fixed h-screen w-screen top-0 left-0 flex items-center justify-center text-4xl font-bold capitalize">
+                no available courses
               </div>
-            </div>
+            ) : (
+              <div className="see-all-div">
+                <CourseList
+                  coursesdata={courses}
+                  onDelete={(id) => {
+                    HandleDeleteItem(id);
+                  }}
+                  key={courses.length}
+                />
+              </div>
+            )}
           </div>
         )}
       </section>

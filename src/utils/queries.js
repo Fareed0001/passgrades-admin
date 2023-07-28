@@ -154,7 +154,6 @@ export const getAdmindata = async () => {
 
     // Assuming the API returns a "data" object in the response, extract it and return
     const responseData = response.data;
-    console.log(responseData);
 
     return responseData;
   } catch (error) {
@@ -163,5 +162,23 @@ export const getAdmindata = async () => {
   }
 };
 
-getAdmindata();
 // http://passmark.eu-north-1.elasticbeanstalk.com/api/v1/admin/agents
+
+// http://passmark.eu-north-1.elasticbeanstalk.com/api/v1/admin/instructors/64bee0429f0e8d226dd5a15a/delete
+
+// export const deleteItem = async (id, deleteItem) => {
+//   try {
+//     const authToken = Cookies.get("authToken");
+//     if (!authToken) {
+//       return null;
+//     }
+//     const response = await Axios.delete(`instructors/${id}/delete`, {
+//       headers: {
+//         Authorization: `Bearer ${authToken}`,
+//       },
+//     });
+
+//     const responseData = response.data;
+//     return responseData;
+//   } catch (error) {}
+// };

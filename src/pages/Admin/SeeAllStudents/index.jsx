@@ -1,7 +1,5 @@
-import StudentCard from "@/Components/StudentCard";
-
+import StudentList from "@/Components/StudentList";
 import Axios from "@/utils/Axios";
-
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
@@ -38,23 +36,34 @@ const Index = () => {
     fetchStudents();
   }, []);
 
+  const HandleDeleteItem = (studentID) => {
+    setStudents((previtem) => {
+      const filteredArray = previtem.filter((item) => item._id !== studentID);
+      toast.success("deleted");
+      return filteredArray;
+    });
+  };
   return (
     <section className="addNewCourse h-screen">
       <div className="container body-content">
         <p className="admin-header-text">See all Students</p>
 
         <div className="see-all-div">
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-            {students.map((student) => (
-              <StudentCard
-                key={student._id}
-                firstName={student.firstname}
-                lastname={student.lastname}
-                email={student.email}
-                number={student.number}
+          {students.length === 0 ? (
+            <div className="fixed h-screen w-screen top-0 left-0 flex items-center justify-center text-4xl font-bold capitalize">
+              no available Students
+            </div>
+          ) : (
+            <div className="see-all-div">
+              <StudentList
+                studentdata={students}
+                onDelete={(id) => {
+                  HandleDeleteItem(id);
+                }}
+                key={students.length}
               />
-            ))}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
