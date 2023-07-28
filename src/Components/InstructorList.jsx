@@ -39,6 +39,7 @@ const InstructorList = ({ instructordata, onDelete }) => {
           }}
           key={instructors._id}
           id={instructors._id}
+          photo={instructors.photo}
           firstName={instructors.firstname}
           lastName={instructors.lastname}
         />

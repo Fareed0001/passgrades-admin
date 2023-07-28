@@ -36,6 +36,7 @@ const CourseList = ({ coursesdata, onDelete }) => {
           onDelete={(id) => {
             handleDelete(id);
           }}
+          cover_image={course.cover_image}
           title={course.title}
           key={course._id}
           id={course._id}

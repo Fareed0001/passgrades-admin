@@ -4,7 +4,9 @@ const AgentCard = ({
   firstName,
   lastname,
   email,
-  phonenumber,
+  phone,
+  company,
+  photo,
   id,
   onDelete,
 }) => {
@@ -15,7 +17,7 @@ const AgentCard = ({
     <div className="col see-all-col">
       <div className="see-all-card">
         <img
-          src=""
+          src={photo}
           alt="Yet to update image"
           className="card-img-top see-all-card-img"
         />
@@ -26,7 +28,8 @@ const AgentCard = ({
             {firstName} {lastname}
           </p>
           <p className="see-all-card-title">{email}</p>
-          <p className="see-all-card-title">{phonenumber}</p>
+          <p className="see-all-card-title">{phone}</p>
+          <p className="see-all-card-title">{company}</p>
           <div class="d-grid">
             <button
               type="button"

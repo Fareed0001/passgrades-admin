@@ -4,7 +4,8 @@ const StudentCard = ({
   firstName,
   lastname,
   email,
-  phonenumber,
+  phone,
+  photo,
   id,
   onDelete,
 }) => {
@@ -15,7 +16,7 @@ const StudentCard = ({
     <div className="col see-all-col">
       <div className="see-all-card">
         <img
-          src=""
+          src={photo}
           alt="Yet to update Image"
           className="card-img-top see-all-card-img"
         />
@@ -26,7 +27,7 @@ const StudentCard = ({
             {firstName} {lastname}
           </p>
           <p className="see-all-card-title">{email}</p>
-          <p className="see-all-card-title">{phonenumber}</p>
+          <p className="see-all-card-title">{phone}</p>
           <div class="d-grid">
             <button
               onClick={() => {

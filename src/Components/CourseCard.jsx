@@ -1,14 +1,15 @@
 import React from "react";
 
 const CourseCard = ({ cover_image, title, id, onDelete }) => {
-  const HandleDelete = (id) => {
+  const handleDelete = () => {
     onDelete(id);
   };
+
   return (
     <div className="col see-all-col">
       <div className="see-all-card">
         <img
-          src={cover_image}
+          src={cover_image} // Make sure the cover_image is the correct URL for the image
           alt={title}
           className="card-img-top see-all-card-img"
         />
@@ -18,9 +19,7 @@ const CourseCard = ({ cover_image, title, id, onDelete }) => {
             <button
               type="button"
               className="btn btn-outline-danger"
-              onClick={() => {
-                HandleDelete(id);
-              }}
+              onClick={handleDelete}
             >
               Delete
             </button>

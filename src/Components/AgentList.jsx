@@ -28,18 +28,23 @@ const AgentList = ({ Agentdata, onDelete }) => {
       console.log(responseData);
 
       return responseData;
-    } catch (error) {}
+    } catch (error) { }
   };
   return (
     <ul className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-      {Agentdata.map((course) => (
+      {Agentdata.map((Agent) => (
         <AgentCard
           onDelete={(id) => {
             handleDelete(id);
           }}
-          title={course.title}
-          key={course._id}
-          id={course._id}
+          photo={Agent.photo}
+          firstName={Agent.firstname}
+          lastName={Agent.lastname}
+          email={Agent.email}
+          phone={Agent.phone}
+          company={Agent.company}
+          key={Agent._id}
+          id={Agent._id}
         />
       ))}
     </ul>

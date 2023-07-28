@@ -35,6 +35,11 @@ const StudentList = ({ studentdata, onDelete }) => {
           onDelete={(id) => {
             handleDelete(id);
           }}
+          photo={student.photo}
+          firstName={student.firstname}
+          lastName={student.lastname}
+          email={student.email}
+          phone={student.phone}
           key={student._id}
           id={student._id}
         />
