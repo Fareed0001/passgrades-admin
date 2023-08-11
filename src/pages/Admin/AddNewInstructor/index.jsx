@@ -53,7 +53,7 @@ const Index = () => {
 
   return (
     <section className="addNewCourse">
-      <div className="container body-content">
+      <div className="container body-content h-screen">
         <p className="admin-header-text">Add a new instructor</p>
         <form onSubmit={submitHandler}>
           <div className="row container">

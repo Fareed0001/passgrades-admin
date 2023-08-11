@@ -63,6 +63,12 @@ const Index = () => {
         <section className="bg-[#ebeefd] h-full fixed w-full overflow-auto py-10">
           <div className="container body-content">
             <p className="admin-header-text">See all Instructors</p>
+
+            <form className="d-flex search-div" role="search">
+              <input className="form-control me-2" type="search" placeholder="Search by instructor's name" aria-label="Search" />
+              <button className="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+
             {instructors.length === 0 ? (
               <div className="fixed h-screen w-screen top-0 left-0 flex items-center justify-center text-4xl font-bold capitalize">
                 no available instructors

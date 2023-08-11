@@ -384,3 +384,72 @@
 }*/
 /* admin see all end  */
 /* ADMIN-ADD-CLASS.HTML END  */
+
+
+
+
+
+/* RECEIVED-MESSAGES.HTML START */
+
+.message-card-title {
+  font: 1rem;
+  font-weight: 600;
+}
+
+.message-card-text {
+  font-size: .8rem;
+  text-align: justify;
+}
+
+.message-details-text {
+  color: var(--secondary-color);
+}
+
+.message-delete-text {
+  color: red;
+  float: right;
+}
+
+/* RECEIVED-MESSAGES.HTML END */
+
+
+
+
+
+/* SEARCH DIV  */
+
+.search-div {
+  margin: 2% auto;
+  width: 50%;
+}
+
+/* start of pc styles */
+@media screen and (max-width: 991px) {
+  /* ie it ends at 991px */
+  .search-div {
+    width: 70%;
+  }
+}
+
+/* start of medium tablet styles */
+@media screen and (max-width: 767px) {
+  /* ie it ends at 767px */
+  .search-div {
+    width: 80%;
+  }
+} 
+
+/* start of phone styles */
+@media screen and (max-width: 479px) {
+  /* ie it ends at 479px */
+  .search-div {
+    width: 100%;
+  }
+} 
+/* admin see all end  */
+/* SEARCH DIV  */
+
+
+
+
+

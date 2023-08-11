@@ -15,7 +15,7 @@ const AgentCard = ({
   };
   return (
     <div className="col see-all-col">
-      <div className="see-all-card">
+      <div className="see-all-card card h-100">
         <img
           src={photo}
           alt="Yet to update image"

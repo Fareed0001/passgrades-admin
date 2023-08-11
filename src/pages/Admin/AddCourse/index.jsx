@@ -57,7 +57,7 @@ const Index = () => {
 
   return (
     <section className="addNewCourse">
-      <div className="container new-course-container">
+      <div className="container new-course-container h-screen">
         <p className="admin-header-text">Add a new course</p>
         <form onSubmit={handleSubmit}>
           <div className="row container">
@@ -102,8 +102,8 @@ const Index = () => {
               ></textarea>
             </div>
 
-            {/* <div className="naira-price col-sm-6 col-md-4 col-lg-3"> */}
-              <div className="input-field-div col-6">
+            <div className="naira-price col-sm-6 col-md-4 col-lg-3">
+              <div className="input-field-div col">
                 <label htmlFor="studentPrice" className="form-label admin-form-label">
                   Student price
                 </label>
@@ -120,7 +120,7 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="input-field-div col-6">
+              <div className="input-field-div col">
                 <label htmlFor="agentPrice" className="form-label admin-form-label">
                   Agent price
                 </label>
@@ -136,9 +136,9 @@ const Index = () => {
                   <span className="input-group-text">.00</span>
                 </div>
               </div>
-            {/* </div> */}
+            </div>
 
-            {/* <div className="dollar-price col-sm-6 col-md-4 col-lg-3">
+            <div className="dollar-price col-sm-6 col-md-4 col-lg-3">
               <div className="input-field-div col">
                 <label htmlFor="studentPrice" className="form-label admin-form-label">
                   Student price
@@ -244,7 +244,7 @@ const Index = () => {
                   <span className="input-group-text">.00</span>
                 </div>
               </div>
-            </div>  */}
+            </div> 
 
             <div className="input-field-div col-12">
               <label
@@ -262,7 +262,7 @@ const Index = () => {
               />
             </div>
 
-            {/* <div className="input-field-div col-lg-12">
+            <div className="input-field-div col-lg-12">
               <label
                 htmlFor="courseMessage"
                 className="form-label admin-form-label"
@@ -274,7 +274,7 @@ const Index = () => {
                 placeholder="Enter the message you want the student to get in his dashboard after he buys this course"
                 id="courseDescription"
               ></textarea>
-            </div> */}
+            </div>
 
           </div>
           <button className="btn btn-primary add-new-course-button" type="submit">

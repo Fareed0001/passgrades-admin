@@ -37,18 +37,23 @@ const Index = () => {
     fetchAdmins();
   }, []);
 
-  const HandleDeleteItem = (adminID) => {
-    setAdmins((prevItems) => {
-      const filteredArray = prevItems.filter((item) => item._id !== adminID);
-      toast.success("Deleted");
-      return filteredArray;
-    });
-  };
+  // const HandleDeleteItem = (adminID) => {
+  //   setAdmins((prevItems) => {
+  //     const filteredArray = prevItems.filter((item) => item._id !== adminID);
+  //     toast.success("Deleted");
+  //     return filteredArray;
+  //   });
+  // };
 
   return (
     <section className="addNewCourse h-screen">
-      <div className="container body-content">
+      <div className="container body-content h-screen">
         <p className="admin-header-text">See all Admins</p>
+
+        <form className="d-flex search-div" role="search">
+          <input className="form-control me-2" type="search" placeholder="Search by admin name" aria-label="Search" />
+            <button className="btn btn-outline-primary" type="submit">Search</button>
+        </form>
 
         <div className="see-all-div">
           {admins.length === 0 ? (

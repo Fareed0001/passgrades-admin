@@ -44,9 +44,14 @@ const Index = () => {
     });
   };
   return (
-    <section className="addNewCourse h-screen">
-      <div className="container body-content">
+    <section className="addNewCourse bg-[#ebeefd] h-full w-full overflow-auto">
+      <div className="container body-content h-screen">
         <p className="admin-header-text">See all Students</p>
+
+        <form className="d-flex search-div" role="search">
+          <input className="form-control me-2" type="search" placeholder="Search by student name" aria-label="Search" />
+          <button className="btn btn-outline-primary" type="submit">Search</button>
+        </form>
 
         <div className="see-all-div">
           {students.length === 0 ? (

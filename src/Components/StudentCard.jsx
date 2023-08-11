@@ -14,7 +14,7 @@ const StudentCard = ({
   };
   return (
     <div className="col see-all-col">
-      <div className="see-all-card">
+      <div className="see-all-card card h-100">
         <img
           src={photo}
           alt="Yet to update Image"
@@ -28,13 +28,13 @@ const StudentCard = ({
           </p>
           <p className="see-all-card-title">{email}</p>
           <p className="see-all-card-title">{phone}</p>
-          <div class="d-grid">
+          <div className="d-grid">
             <button
               onClick={() => {
                 HandleDelete(id);
               }}
               type="button"
-              class="btn btn-outline-danger"
+              className="btn btn-outline-danger"
             >
               Delete
             </button>

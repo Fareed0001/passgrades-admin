@@ -64,7 +64,7 @@ const Index = () => {
         </div>
       )}
 
-      <div className="container new-course-container">
+      <div className="container new-course-container h-screen">
         <p className="admin-header-text">Start online class</p>
         <form onSubmit={handleSubmit}>
           <div className="row container">

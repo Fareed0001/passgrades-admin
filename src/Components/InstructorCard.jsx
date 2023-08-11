@@ -8,7 +8,7 @@ const InstructorCard = ({ firstName, lastName, photo, onDelete, id }) => {
   };
   return (
     <div className="col see-all-col">
-      <div className="see-all-card">
+      <div className="see-all-card card h-100">
         <img
           src={photo}
           alt={`${firstName} ${lastName}`}

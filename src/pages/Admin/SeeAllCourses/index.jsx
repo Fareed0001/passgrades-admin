@@ -60,8 +60,13 @@ const Index = () => {
             </div>
           </div>
         ) : (
-          <div className="container body-content">
+          <div className="container body-content h-screen">
             <p className="admin-header-text">See all Courses</p>
+
+            <form className="d-flex search-div" role="search">
+              <input className="form-control me-2" type="search" placeholder="Search by course name" aria-label="Search" />
+              <button className="btn btn-outline-primary" type="submit">Search</button>
+            </form>
 
             {courses.length === 0 ? (
               <div className="fixed h-screen w-screen top-0 left-0 flex items-center justify-center text-4xl font-bold capitalize">
